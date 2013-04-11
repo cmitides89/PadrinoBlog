@@ -6,6 +6,7 @@ module PadrinoBlog
     register Padrino::Helpers
 
     enable :sessions
+    layout :layout
 
     ##
     # Caching support
