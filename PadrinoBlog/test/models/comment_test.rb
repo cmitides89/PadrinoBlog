@@ -7,16 +7,16 @@ class CommentTest < Test::Unit::TestCase
   		@tag = Tag.new(:name => "thistag")
 
   		@post_tag =PostTag.new(:post => @post, :tag => @tag)
-  		@post.post_tag << @post_tag
+  		@post.post_tags << @post_tag
   		@post.save!
   	end
 
     should "have many post_tags" do
-    	assert @post.respond_to?(:post_tag)
-    	assert_equal 1, @post.post_tag.length
+    	assert @post.respond_to?(:post_tags) #does it have many post_tags?
+    	assert_equal 1, @post.post_tags.length
     	assert @post.post_tags.is_a?(Array)
     	assert @post.post_tags.first.is_a?(PostTag)
-    	assert @post.post_tags.first.order.is_a?(Tag)
+    	assert @post.post_tags.first.tag.is_a?(Tag)
     	assert_equal @post, @post.post_tags.first.post
     end
   end
